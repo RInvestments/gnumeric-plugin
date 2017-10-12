@@ -5,6 +5,8 @@ Python can be used to define these functions. Essentially this provides hook to 
 python functions from gnumeric spreadsheet. My python functions than connect to
 the flask-site (stock api) via http to retrive requested stock data.
 
+See the underlying API in repo [tray-api](https://github.com/RInvestments/tray-api). Tools for crawling, parsing and insertion into db in repo [sun-dance](https://github.com/RInvestments/sun-dance). 
+
 ## Files
 - plugin.xml : List of user defined functions
 - py_func.py : This file defines each of the custom-functions in python.
