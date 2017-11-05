@@ -59,7 +59,7 @@ def api_call( ticker, field ):
 	url_db['employees'] = '/api/info/%s/employees' %(ticker)
 	url_db['description'] = '/api/info/%s/description' %(ticker)
 	url_db['address'] = '/api/info/%s/address' %(ticker)
-	
+
 
 
 
@@ -262,6 +262,16 @@ def api_list_companies( industry, sector, bourse, cell ):
 
 	for i, data in enumerate(info.split(',')):
 		sheet.cell_fetch( int(col(cell))-1, i+int(row(cell))-1 ).set_text( data )
+
+
+	while True:
+		i = i+1
+		the_t = sheet.cell_fetch( int(col(cell))-1, i+int(row(cell))-1 ).get_rendered_text()
+		print i, the_t
+		sheet.cell_fetch( int(col(cell))-1, i+int(row(cell))-1 ).set_text( '' )
+		if the_t == '':
+			break
+
 
 	return industry+','+sector+str(len(info.split(',')))
 
