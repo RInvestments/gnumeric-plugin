@@ -52,6 +52,9 @@ def square_me( a ):
 
 
 def api_call( ticker, field ):
+
+	if ticker == '' or ticker is None:
+		return ''
 	url_db = {}
 	url_db['name'] = '/api/info/%s' %(ticker)
 	url_db['industry'] = '/api/info/%s/industry' %(ticker)
@@ -90,6 +93,8 @@ def days_to_date( days_since_ ):
 	return datetime.datetime.strftime( base+delta, '%Y-%m-%d' )
 
 def api_call_quote_timed( ticker,field,year ):
+	if ticker == '' or ticker is None:
+		return ''
 	url_db = {}
 	# From Daily Quote Data
 	url_db['close' ] = '/api/info/%s/quote/close/%s' %(ticker,days_to_date( year ))
@@ -125,6 +130,8 @@ def api_call_quote_timed( ticker,field,year ):
 
 def api_call_timed( ticker,field,year ):
 	# return "Hello %s %s %s" %(str(ticker), str(field), str(year))
+	if ticker == '' or ticker is None:
+		return ''
 	url_db = {}
 	# From Income Statement
 	url_db['revenue'] = '/api/info/%s/is/revenue/%d' %(ticker,year)
@@ -267,7 +274,7 @@ def api_list_companies( industry, sector, bourse, cell ):
 	while True:
 		i = i+1
 		the_t = sheet.cell_fetch( int(col(cell))-1, i+int(row(cell))-1 ).get_rendered_text()
-		print i, the_t
+		# print i, the_t
 		sheet.cell_fetch( int(col(cell))-1, i+int(row(cell))-1 ).set_text( '' )
 		if the_t == '':
 			break
